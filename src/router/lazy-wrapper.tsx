@@ -2,14 +2,14 @@ import { lazy, Suspense } from "react";
 import { Spin } from "antd";
 
 function LazyWrapper(path: string) {
-  // const LazyComponent = lazy(() => import(`/src/views/${path}/index.tsx`));
+  // const LazyComponent = lazy(() => import(`src/views/${path};
 
   // 模拟慢加载
   const LazyComponent = lazy(
     () =>
       new Promise((resolve) => {
         setTimeout(() => {
-          resolve(import(`/src/views/${path}`));
+          resolve(import(/* @vite-ignore */ `/src/views/${path}`));
         }, 1000);
       })
   );
