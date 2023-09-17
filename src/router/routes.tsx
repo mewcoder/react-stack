@@ -1,18 +1,28 @@
 import { useRoutes } from "react-router-dom";
 
-import Home from "../views/home";
 import LazyWrapper from "./lazy-wrapper";
+import Layout from "../components/main-layout";
 
 export default function Routes() {
-  const element = useRoutes([
+  return useRoutes([
     {
-      path: "/",
-      Component: Home,
+      Component: Layout,
+      children: [
+        {
+          index: true,
+          element: LazyWrapper("home"),
+        },
+        {
+          path: "about",
+          element: LazyWrapper("about"),
+        },
+        {
+          path: "task",
+          element: LazyWrapper("task"),
+          children: [{ path: ":id", element: LazyWrapper("task/detail") }],
+        },
+      ],
     },
-    {
-      path: "/about",
-      element: LazyWrapper("about"),
-    },
+    { path: "*", element: <h1>404</h1> },
   ]);
-  return element;
 }

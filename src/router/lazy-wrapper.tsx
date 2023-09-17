@@ -4,13 +4,13 @@ import { Spin } from "antd";
 function LazyWrapper(path: string) {
   // const LazyComponent = lazy(() => import(`/src/views/${path}/index.tsx`));
 
-  // 模拟加载慢
+  // 模拟慢加载
   const LazyComponent = lazy(
     () =>
       new Promise((resolve) => {
         setTimeout(() => {
-          resolve(import(`/src/views/${path}/index.tsx`));
-        }, 3000);
+          resolve(import(`/src/views/${path}`));
+        }, 1000);
       })
   );
 
