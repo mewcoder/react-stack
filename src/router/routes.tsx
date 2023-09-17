@@ -1,12 +1,12 @@
 import { useRoutes } from "react-router-dom";
 
 import LazyWrapper from "./lazy-wrapper";
-import Layout from "../components/main-layout";
+import MainLayout from "../components/main-layout";
 
 export default function Routes() {
   return useRoutes([
     {
-      Component: Layout,
+      Component: MainLayout,
       children: [
         {
           index: true,
